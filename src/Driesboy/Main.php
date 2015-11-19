@@ -59,7 +59,7 @@ class Main extends PluginBase implements Listener{
 	        foreach($e->getPlayer()->getLevel()->getPlayers() as $p);	
                         $p->dataPacket($pk);
     }else{
-      $sender->sendTip("You do not have permission to use this command");
+      $sender->sendMessage("You do not have permission to use this command");
     }
   }
                               
@@ -92,10 +92,7 @@ class Main extends PluginBase implements Listener{
 	        $this->lightning->x = $e->getPlayer()->getX();
 	        $this->lightning->y = $e->getPlayer()->getY();
 	        $this->lightning->z = $e->getPLayer()->getZ();
-                $JL->$this->getConfig->get(LightJoin);
-            if($JL === true){
 	        foreach($e->getPlayer()->getLevel()->getPlayers() as $p);	
                 $p->dataPacket($pk);
             }
         }           
-}
