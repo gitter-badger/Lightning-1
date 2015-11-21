@@ -17,8 +17,8 @@ class Main extends PluginBase implements Listener{
 	public function onEnable() {
                 $this->getLogger()->info("§6Lightning by Driesboy is Enabled");		
 	}
-        public function onEnable() {
-	        $this->getlogger()->info("§6LightningDead by Driesboy Disable");	
+        public function onDisable() {
+	        $this->getlogger()->info("§6Lightning by Driesboy is Disable");	
 	}	
 	
 	/**
