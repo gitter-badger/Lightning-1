@@ -24,75 +24,85 @@ class Main extends PluginBase implements Listener{
 	 * 
 	 * @priority MONITOR
 	 */
-	public function onDeath(PlayerDeathEvent $e){
-	        if($this->lightning = null){
-	        	$this->lightning = new AddEntityPacket();
-	        	$this->lightning->type = 93;
-	        	$this->lightning->eid = Entity::$entityCount++;
-	        	$this->lightning->metadata = [];
-	        	$this->lightning->speedX = 0;
-	        	$this->lightning->speedY = 0;
-	        	$this->lightning->speedZ = 0;
-	        }
-	        $this->lightning->x = $e->getPlayer()->getX();
-	        $this->lightning->y = $e->getPlayer()->getY();
-	        $this->lightning->z = $e->getPLayer()->getZ();
-	        foreach($e->getPlayer()->getLevel()->getPlayers() as $p);	
-                        $p->dataPacket($pk);
+public function onDeath(PlayerDeathEvent $e){
+      $p = $event->getEntity();
+      $level = $p->getLevel();
+      $light = new AddEntityPacket();
+      $light->type = 93;
+      $light->eid = Entity::$entityCount++;
+      $light->metadata = array();
+      $light->speedX = 0;
+      $light->speedY = 0;
+      $light->speedZ = 0;
+      $light->yaw = $p->getYaw();
+      $light->pitch = $p->getPitch();
+      $light->x = $p->x;
+      $light->y = $p->y;
+      $light->z = $p->z;
+    foreach($level->getPlayers() as $pl){
+        $pl->dataPacket($light);
                 }
-   public function onCommand(CommandSender $sender,Command $cmd,$label,array $args) {
+                
+public function onCommand(CommandSender $sender,Command $cmd,$label,array $args) {
     if((strtolower($cmd->getName()) == "light") && isset($args[0])) {
       if($sender->hasPermission("light.command")){
         $player = $this->getServer()->getPlayer($args[0]);
         $level = $player->getLevel();
-	        	$this->lightning = new AddEntityPacket();
-	        	$this->lightning->type = 93;
-	        	$this->lightning->eid = Entity::$entityCount++;
-	        	$this->lightning->metadata = [];
-	        	$this->lightning->speedX = 0;
-	        	$this->lightning->speedY = 0;
-	        	$this->lightning->speedZ = 0;
-	        }
-	        $this->lightning->x = $e->getPlayer()->getX();
-	        $this->lightning->y = $e->getPlayer()->getY();
-	        $this->lightning->z = $e->getPLayer()->getZ();
-	        foreach($e->getPlayer()->getLevel()->getPlayers() as $p);	
-                        $p->dataPacket($pk);
+        $p = $event->getEntity();
+        $level = $p->getLevel();
+        $light = new AddEntityPacket();
+        $light->type = 93;
+        $light->eid = Entity::$entityCount++;
+        $light->metadata = array();
+        $light->speedX = 0;
+        $light->speedY = 0;
+        $light->speedZ = 0;
+        $light->yaw = $p->getYaw();
+        $light->pitch = $p->getPitch();
+        $light->x = $p->x;
+        $light->y = $p->y;
+        $light->z = $p->z;
+      foreach($level->getPlayers() as $pl){
+        $pl->dataPacket($light);
     }else{
       $sender->sendMessage("You do not have permission to use this command");
     }
   }
                               
-        public function onRespawn(PlayerRespawnEvent $e){
-	        if($this->lightning = null){
-	        	$this->lightning = new AddEntityPacket();
-	        	$this->lightning->type = 93;
-	        	$this->lightning->eid = Entity::$entityCount++;
-	        	$this->lightning->metadata = [];
-	        	$this->lightning->speedX = 0;
-	        	$this->lightning->speedY = 0;
-	        	$this->lightning->speedZ = 0;
-	        }
-	        $this->lightning->x = $e->getPlayer()->getX();
-	        $this->lightning->y = $e->getPlayer()->getY();
-	        $this->lightning->z = $e->getPLayer()->getZ();
-	        foreach($e->getPlayer()->getLevel()->getPlayers() as $p);	
-                        $p->dataPacket($pk);
+public function onRespawn(PlayerRespawnEvent $e){
+      $p = $event->getEntity();
+      $level = $p->getLevel();
+      $light = new AddEntityPacket();
+      $light->type = 93;
+      $light->eid = Entity::$entityCount++;
+      $light->metadata = array();
+      $light->speedX = 0;
+      $light->speedY = 0;
+      $light->speedZ = 0;
+      $light->yaw = $p->getYaw();
+      $light->pitch = $p->getPitch();
+      $light->x = $p->x;
+      $light->y = $p->y;
+      $light->z = $p->z;
+    foreach($level->getPlayers() as $pl){
+        $pl->dataPacket($light);
             }  
-    public function onJoin(PlayerJoinEvent $e){
-	    if($this->lightning = null){
-	        	$this->lightning = new AddEntityPacket();
-	        	$this->lightning->type = 93;
-	        	$this->lightning->eid = Entity::$entityCount++;
-	        	$this->lightning->metadata = [];
-	        	$this->lightning->speedX = 0;
-	        	$this->lightning->speedY = 0;
-	        	$this->lightning->speedZ = 0;
-	        }
-	        $this->lightning->x = $e->getPlayer()->getX();
-	        $this->lightning->y = $e->getPlayer()->getY();
-	        $this->lightning->z = $e->getPLayer()->getZ();
-	        foreach($e->getPlayer()->getLevel()->getPlayers() as $p);	
-                $p->dataPacket($pk);
-            }
-        }           
+public function onJoin(PlayerJoinEvent $e){
+      $p = $event->getEntity();
+      $level = $p->getLevel();
+      $light = new AddEntityPacket();
+      $light->type = 93;
+      $light->eid = Entity::$entityCount++;
+      $light->metadata = array();
+      $light->speedX = 0;
+      $light->speedY = 0;
+      $light->speedZ = 0;
+      $light->yaw = $p->getYaw();
+      $light->pitch = $p->getPitch();
+      $light->x = $p->x;
+      $light->y = $p->y;
+      $light->z = $p->z;
+    foreach($level->getPlayers() as $pl){
+        $pl->dataPacket($light);
+        }
+}           
