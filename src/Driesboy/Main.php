@@ -19,6 +19,7 @@ class Main extends PluginBase implements Listener{
 	public function onEnable() {
                 $this->getLogger()->info("§6Lightning by Driesboy is Enabled");
                 $this->getServer()->getPluginManager()->registerEvents($this, $this);
+                $this->saveResource("Config.yml");
 	}
         public function onDisable() {
 	        $this->getlogger()->info("§6Lightning by Driesboy is Disable");	
@@ -31,6 +32,7 @@ class Main extends PluginBase implements Listener{
 	 * @priority MONITOR
 	 */
    public function onDeath(PlayerDeathEvent $e){
+   	if ($this->getConfig()->get("Death") === true) {
 	$p = $e->getEntity();
         $level = $p->getLevel();
 	$light = new AddEntityPacket();
@@ -51,6 +53,7 @@ class Main extends PluginBase implements Listener{
      }
                               
     public function onRespawn(PlayerRespawnEvent $e){
+    	if ($this->getConfig()->get("Respawn") === true) {
 	$p = $e->getPlayer();
         $level = $p->getLevel();
 	$light = new AddEntityPacket();
@@ -71,6 +74,7 @@ class Main extends PluginBase implements Listener{
      }
        
     public function onJoin(PlayerJoinEvent $e){
+    	if ($this->getConfig()->get("Join") === true) {
 	$p = $e->getPlayer();
         $level = $p->getLevel();
 	$light = new AddEntityPacket();
