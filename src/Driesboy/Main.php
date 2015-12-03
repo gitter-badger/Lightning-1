@@ -7,7 +7,6 @@ use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerRespawnEvent;
 use pocketmine\network\protocol\AddEntityPacket;
-use pocketmine\network\protocol\AddEntityPacket;
 use pocketmine\network\protocol\SetTimePacket;
 use pocketmine\network\protocol\TextPacket;
 use pocketmine\network\protocol\AddPlayerPacket;
