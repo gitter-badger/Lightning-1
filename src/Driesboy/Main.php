@@ -30,8 +30,8 @@ class Main extends PluginBase implements Listener{
 	 * 
 	 * @priority MONITOR
 	 */
-   public function onDead(PlayerDeathEvent $e){
-	$p = $e->getPlayer();
+   public function onDeath(PlayerDeathEvent $e){
+	$p = $e->getEntity();
         $level = $p->getLevel();
 	$light = new AddEntityPacket();
         $light->type = 93;
