@@ -51,6 +51,7 @@ class Main extends PluginBase implements Listener{
             $pl->dataPacket($light);
         } 
      }
+   } 
                               
     public function onRespawn(PlayerRespawnEvent $e){
     	if ($this->getConfig()->get("Respawn") === true) {
@@ -72,6 +73,7 @@ class Main extends PluginBase implements Listener{
             $pl->dataPacket($light);
         } 
      }
+    } 
        
     public function onJoin(PlayerJoinEvent $e){
     	if ($this->getConfig()->get("Join") === true) {
@@ -93,4 +95,5 @@ class Main extends PluginBase implements Listener{
             $pl->dataPacket($light);
         } 
      }
+    } 
 }
