@@ -17,7 +17,8 @@ class Main extends PluginBase implements Listener{
 	private $lightning;
 	
 	public function onEnable() {
-                $this->getLogger()->info("§6Lightning by Driesboy is Enabled");		
+                $this->getLogger()->info("§6Lightning by Driesboy is Enabled");
+                $this->getServer()->getPluginManager()->registerEvents($this, $this);
 	}
         public function onDisable() {
 	        $this->getlogger()->info("§6Lightning by Driesboy is Disable");	
@@ -29,63 +30,63 @@ class Main extends PluginBase implements Listener{
 	 * 
 	 * @priority MONITOR
 	 */
-public function onDeath(PlayerDeathEvent $e) {
-             $p = $event->getEntity();
-             $level = $p->getLevel();
-             $light = new AddEntityPacket();
-             $light->type = 93;
-             $light->eid = Entity::$entityCount++;
-             $light->metadata = array();
-             $light->speedX = 0;
-             $light->speedY = 0;
-             $light->speedZ = 0;
-             $light->yaw = $p->getYaw();
-             $light->pitch = $p->getPitch();
-             $light->x = $p->x;
-             $light->y = $p->y;
-             $light->z = $p->z;
-       foreach($level->getPlayers() as $pl){
-             $pl->dataPacket($light);
-        }
-       }
-                              
-       public function onRespawn(PlayerRespawnEvent $e) {
-             $p = $event->getEntity();
-             $level = $p->getLevel();
-             $light = new AddEntityPacket();
-             $light->type = 93;
-             $light->eid = Entity::$entityCount++;
-             $light->metadata = array();
-             $light->speedX = 0;
-             $light->speedY = 0;
-             $light->speedZ = 0;
-             $light->yaw = $p->getYaw();
-             $light->pitch = $p->getPitch();
-             $light->x = $p->x;
-             $light->y = $p->y;
-             $light->z = $p->z;
-       foreach($level->getPlayers() as $pl){
-             $pl->dataPacket($light);
-        }
-       }
-       
-       public function onJoin(PlayerJoinEvent $e) {
-              $p = $event->getEntity();
-              $level = $p->getLevel();
-              $light = new AddEntityPacket();
-              $light->type = 93;
-              $light->eid = Entity::$entityCount++;
-              $light->metadata = array();
-              $light->speedX = 0;
-              $light->speedY = 0;
-              $light->speedZ = 0;
-              $light->yaw = $p->getYaw();
-              $light->pitch = $p->getPitch();
-              $light->x = $p->x;
-              $light->y = $p->y;
-              $light->z = $p->z;
+   public function onDead(PlayerDeathEvent $e){
+	$p = $e->getPlayer();
+        $level = $p->getLevel();
+	$light = new AddEntityPacket();
+        $light->type = 93;
+        $light->eid = Entity::$entityCount++;
+        $light->metadata = array();
+        $light->speedX = 0;
+        $light->speedY = 0;
+        $light->speedZ = 0;
+        $light->yaw = $p->getYaw();
+        $light->pitch = $p->getPitch();
+        $light->x = $p->x;
+        $light->y = $p->y;
+        $light->z = $p->z;
         foreach($level->getPlayers() as $pl){
-              $pl->dataPacket($light);
-        }
-       }
+            $pl->dataPacket($light);
+        } 
+     }
+                              
+    public function onRespawn(PlayerRespawnEvent $e){
+	$p = $e->getPlayer();
+        $level = $p->getLevel();
+	$light = new AddEntityPacket();
+        $light->type = 93;
+        $light->eid = Entity::$entityCount++;
+        $light->metadata = array();
+        $light->speedX = 0;
+        $light->speedY = 0;
+        $light->speedZ = 0;
+        $light->yaw = $p->getYaw();
+        $light->pitch = $p->getPitch();
+        $light->x = $p->x;
+        $light->y = $p->y;
+        $light->z = $p->z;
+        foreach($level->getPlayers() as $pl){
+            $pl->dataPacket($light);
+        } 
+     }
+       
+    public function onJoin(PlayerJoinEvent $e){
+	$p = $e->getPlayer();
+        $level = $p->getLevel();
+	$light = new AddEntityPacket();
+        $light->type = 93;
+        $light->eid = Entity::$entityCount++;
+        $light->metadata = array();
+        $light->speedX = 0;
+        $light->speedY = 0;
+        $light->speedZ = 0;
+        $light->yaw = $p->getYaw();
+        $light->pitch = $p->getPitch();
+        $light->x = $p->x;
+        $light->y = $p->y;
+        $light->z = $p->z;
+        foreach($level->getPlayers() as $pl){
+            $pl->dataPacket($light);
+        } 
+     }
 }
