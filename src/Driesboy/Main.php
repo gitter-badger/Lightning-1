@@ -7,8 +7,11 @@ use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerRespawnEvent;
 use pocketmine\network\protocol\AddEntityPacket;
-use pocketmine\command\Command;
-use pocketmine\command\CommandSender;
+use pocketmine\network\protocol\AddEntityPacket;
+use pocketmine\network\protocol\SetTimePacket;
+use pocketmine\network\protocol\TextPacket;
+use pocketmine\network\protocol\AddPlayerPacket;
+use pocketmine\entity\Entity;
 
 class Main extends PluginBase implements Listener{
 	/** @var AddEntityPacket */
